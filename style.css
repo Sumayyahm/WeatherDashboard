@@ -1,13 +1,4 @@
-.navbar {
-    background-color: midnightblue;
-    color: oldlace;
-    text-align: center !important;
-}
 
-/* .column{
-    float: left;
-    padding: 10px;
-} */
 .column.left {
     width: 28%;
     height: 120px;
@@ -58,6 +49,7 @@
 
 
 .card.forecast {
-    background-color: blue;
+    background-color: white;
     color: white;
+    border: white;
 }

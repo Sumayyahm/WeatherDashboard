@@ -1,4 +1,3 @@
-
 var dateToday = moment().format('MM-DD-YYYY'); 
 var oneDayForward = moment().add(1, 'days').format('MM-DD-YYYY'); 
 var twoDaysForward =  moment().add(2, 'days').format('MM-DD-YYYY');
@@ -36,9 +35,12 @@ $.ajax({
    var lon = response.coord.lon;
     console.log(response.coord.lat)
    var lat = response.coord.lat;
+  //  var iconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+   var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png"
   
    $(".boxed").attr("style", "border: 1px solid gray");
-   $("#cityDate").text(city + "  " + "("+ dateToday + ")");
+   $("#cityDate").text(city + "  " + "("+ dateToday + ")" + "   ");
+   $("#weatherIcon").attr("src", iconURL);
    $("#temperature").text("Temperature : " + finalTemp + " °F");
    $("#humidity").text("Humidity : " + response.main.humidity + " %");
    $("#wind-speed").text("Wind Speed : " + response.wind.speed + " MPH");
@@ -94,27 +96,34 @@ $.ajax({
   }).then(function(response) {
     
     console.log(response);
-    
+
+  $(".card,.forecast").attr("style", "background-color : blue ; border : blue");
+
   $(".title").text("Five Day Forecast :");
-  $(".title").attr("style", "margin-top : 10px");
+  $(".title").attr("style", "margin-top : 10px ; margin-bottom : 20px");
 
   $("#oneDayForward").text(oneDayForward);
+  $("#weatherIconOne").attr("src", "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png");
   $("#oneDFTemp").text("Temp : " + (((response.list[0].main.temp)-273.15)*1.8 + 32).toFixed(1) + " °F");
   $("#oneDFHum").text("Humidity : " + response.list[0].main.humidity + " %");
 
   $("#twoDaysForward").text(twoDaysForward);
+  $("#weatherIconTwo").attr("src", "http://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + "@2x.png");
   $("#twoDFTemp").text("Temp : " + (((response.list[8].main.temp)-273.15)*1.8 + 32).toFixed(1) + " °F");
   $("#twoDFHum").text("Humidity : " + response.list[8].main.humidity + " %");
 
   $("#threeDaysForward").text(threeDaysForward);
+  $("#weatherIconThree").attr("src", "http://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + "@2x.png");
   $("#threeDFTemp").text("Temp : " + (((response.list[16].main.temp)-273.15)*1.8 + 32).toFixed(1) + " °F")
   $("#threeDFHum").text("Humidity : " + response.list[16].main.humidity + " %");
 
   $("#fourDaysFoward").text(fourDaysFoward);
+  $("#weatherIconFour").attr("src", "http://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + "@2x.png");
   $("#fourDFTemp").text("Temp : " + (((response.list[24].main.temp)-273.15)*1.8 + 32).toFixed(1) + " °F");
   $("#fourDFHum").text("Humidity : " + response.list[24].main.humidity + " %");
 
   $("#fiveDaysForward").text(fiveDaysForward);
+  $("#weatherIconFive").attr("src", "http://openweathermap.org/img/wn/" + response.list[32].weather[0].icon + "@2x.png");
   $("#fiveDFTemp").text("Temp : " + (((response.list[32].main.temp)-273.15)*1.8 + 32).toFixed(1) + " °F");
   $("#fiveDFHum").text("Humidity : " + response.list[32].main.humidity + " %");
 
