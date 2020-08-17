@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<nav class="navbar">
+<h1>Weather Dashboard</h1>
+</nav>
+
+  
+  <div class = "row-oa">
+  <div class="card column left">
+    <div class="card-body">
+    <h4>Search for a City:</h4>
+    <form class="form-inline">
+        <input type="text" class="form-control" id="searchCity">
+        <button class="btn btn-outline-success my-2 my-sm-0" id="btnClick" type="click"><i class="fas fa-search"></i></button>
+       </form>
+      </div>
+    </div>
+
+
+<div class="column right">
+  <div class="boxed">
+    <h2 id="cityDate"></h2>
+    <br>
+    <p id="temperature"></p>
+    <p id="humidity"></p>
+    <p id="wind-speed"></p>
+    <div class="disp-inline" id="uv-index"></div> 
+    <div class="disp-inline" id="index-value"></div>
+  </div>
+  <div class="fivedayForecst">
+    <h3 class="title"></h3>
+    <div class="card-deck">
+      <div class="card forecast">
+        <div class="card-body">
+          <h5 class="card-title" id="oneDayForward"></h5>
+          <p class="card-text" id= "oneDFTemp"></p>
+          <p class="card-text" id = "oneDFHum"></p>
+        </div>
+      </div>
+      <div class="card forecast">
+        <div class="card-body">
+          <h5 class="card-title" id="twoDaysForward"></h5>
+          <p class="card-text" id = "twoDFTemp"></p>
+          <p class="card-text" id = "twoDFHum"></p>
+        </div>
+      </div>
+      <div class="card forecast">
+        <div class="card-body">
+          <h5 class="card-title" id="threeDaysForward"></h5>
+          <p class="card-text" id="threeDFTemp"></p>
+          <p class="card-text" id ="threeDFHum"></p>
+        </div>
+      </div>
+      <div class="card forecast">
+        <div class="card-body">
+          <h5 class="card-title" id="fourDaysFoward"></h5>
+          <p class="card-text" id="fourDFTemp"></p>
+          <p class="card-text" id="fourDFHum"></p>
+        </div>
+      </div>
+      <div class="card forecast">
+        <div class="card-body">
+          <h5 class="card-title" id="fiveDaysForward"></h5>
+          <p class="card-text" id="fiveDFTemp"></p>
+          <p class="card-text" id="fiveDFHum"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div> 
+  </div>
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
