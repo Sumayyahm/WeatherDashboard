@@ -12,90 +12,92 @@
 
 <body>
 
-
- <nav class="navbar navbar-dark bg-dark">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <h1 class="navbar-brand w-100 text-center" style = "font-size: xx-large;">Weather Dashboard</h1>
 </nav>
 
 
   
-  <div class = "row-oa">
+<div class = "row">
+
+  <!-- Left Column - Search Input and List of Cities searched from Local Storage -->
   <div class="column left">
     <div class="card-body">
-    <h4>Search for a City:</h4>
-    <form class="form-inline">
+      <h4>Search for a City:</h4>
+      <form class="form-inline">
         <input type="text" class="form-control" id="searchCity">
         <button class="btn btn-outline-success my-2 my-sm-0" id="btnClick" type="click"><i class="fas fa-search"></i></button>
-       </form>
-      </div>
+      </form>
+    </div>
+    <section style="margin-left: 20px;">
+      Cities Searched:
+      <br>
+      <div id = "citiesSearched"></div>
+    </section>
+  </div>
+
+
+  <!-- Right Column - City  current weather report and five day forecast -->
+  <div class="column right">
+    <div class="boxed">
+      <h2 class="disp-inline" id="cityDate"></h2>
+      <img class="disp-inline" id="weatherIcon" src="">
+      <br>
+      <p id="temperature"></p>
+      <p id="humidity"></p>
+      <p id="wind-speed"></p>
+      <div class="disp-inline" id="uv-index"></div> 
+      <div class="disp-inline" id="index-value"></div>
     </div>
 
-
-<div class="column right">
-  <div class="boxed">
-    <h2 class="disp-inline" id="cityDate"></h2>
-    <img class="disp-inline" id="weatherIcon" src="">
-    <br>
-    <p id="temperature"></p>
-    <p id="humidity"></p>
-    <p id="wind-speed"></p>
-    <div class="disp-inline" id="uv-index"></div> 
-    <div class="disp-inline" id="index-value"></div>
-  </div>
-  <div class="fivedayForecst">
-    <h4 class="title"></h4>
-    <div class="card-deck">
-      <div class="card forecast">
-        <div class="card-body">
-          <h5 class="card-title" id="oneDayForward"></h5>
-          <img id="weatherIconOne" src="">
-          <p class="card-text" id= "oneDFTemp"></p>
-          <p class="card-text" id = "oneDFHum"></p>
+    <div class="fivedayForecst">
+      <h4 class="title"></h4>
+      <div class="card-deck">
+        <div class="card forecast">
+          <div class="card-body">
+            <h5 class="card-title" id="oneDayForward"></h5>
+            <img id="weatherIconOne" src="">
+            <p class="card-text" id= "oneDFTemp"></p>
+            <p class="card-text" id = "oneDFHum"></p>
+          </div>
         </div>
-      </div>
-      <div class="card forecast">
-        <div class="card-body">
-          <h5 class="card-title" id="twoDaysForward"></h5>
-          <img id="weatherIconTwo" src="">
-          <p class="card-text" id = "twoDFTemp"></p>
-          <p class="card-text" id = "twoDFHum"></p>
+        <div class="card forecast">
+          <div class="card-body">
+            <h5 class="card-title" id="twoDaysForward"></h5>
+            <img id="weatherIconTwo" src="">
+            <p class="card-text" id = "twoDFTemp"></p>
+            <p class="card-text" id = "twoDFHum"></p>
+          </div>
         </div>
-      </div>
-      <div class="card forecast">
-        <div class="card-body">
-          <h5 class="card-title" id="threeDaysForward"></h5>
-          <img id="weatherIconThree" src="">
-          <p class="card-text" id="threeDFTemp"></p>
-          <p class="card-text" id ="threeDFHum"></p>
+        <div class="card forecast">
+          <div class="card-body">
+            <h5 class="card-title" id="threeDaysForward"></h5>
+            <img id="weatherIconThree" src="">
+            <p class="card-text" id="threeDFTemp"></p>
+            <p class="card-text" id ="threeDFHum"></p>
+          </div>
         </div>
-      </div>
-      <div class="card forecast">
-        <div class="card-body">
-          <h5 class="card-title" id="fourDaysFoward"></h5>
-          <img id="weatherIconFour" src="">
-          <p class="card-text" id="fourDFTemp"></p>
-          <p class="card-text" id="fourDFHum"></p>
+        <div class="card forecast">
+          <div class="card-body">
+            <h5 class="card-title" id="fourDaysFoward"></h5>
+            <img id="weatherIconFour" src="">
+            <p class="card-text" id="fourDFTemp"></p>
+            <p class="card-text" id="fourDFHum"></p>
+          </div>
         </div>
-      </div>
-      <div class="card forecast">
-        <div class="card-body">
-          <h5 class="card-title" id="fiveDaysForward"></h5>
-          <img id="weatherIconFive" src="">
-          <p class="card-text" id="fiveDFTemp"></p>
-          <p class="card-text" id="fiveDFHum"></p>
+        <div class="card forecast">
+          <div class="card-body">
+            <h5 class="card-title" id="fiveDaysForward"></h5>
+            <img id="weatherIconFive" src="">
+            <p class="card-text" id="fiveDFTemp"></p>
+            <p class="card-text" id="fiveDFHum"></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-    </div> 
-  </div>
-
-
-
-
-
-
-
+  </div> 
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

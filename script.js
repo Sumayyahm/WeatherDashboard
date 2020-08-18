@@ -1,22 +1,54 @@
+//Initialising date variables using moment()
 var dateToday = moment().format('MM-DD-YYYY'); 
 var oneDayForward = moment().add(1, 'days').format('MM-DD-YYYY'); 
 var twoDaysForward =  moment().add(2, 'days').format('MM-DD-YYYY');
 var threeDaysForward =  moment().add(3, 'days').format('MM-DD-YYYY');
 var fourDaysFoward =  moment().add(4, 'days').format('MM-DD-YYYY');
 var fiveDaysForward =  moment().add(5, 'days').format('MM-DD-YYYY');
- 
-console.log(dateToday);
-console.log(oneDayForward);
-console.log(twoDaysForward);
-console.log(threeDaysForward);
-console.log(fourDaysFoward);
-console.log(fiveDaysForward);
+//Initialising an array that takes the input from the search field and saves it to local storage
+var cityArr =[];
 
+retreiveLocalStorage();
+
+//Function to retreive the list of cities searched from the local storage and display the list when the page is refreshed
+function retreiveLocalStorage() {
+  cityArr = JSON.parse(localStorage.getItem("cityArr"));
+  if(cityArr !== null)
+  {
+    for (var i = 0;  i < cityArr.length; i++)
+    { 
+      var currentCity = cityArr[i];
+      var pTag = $("<p>");
+      $("#citiesSearched").prepend(pTag);
+      pTag.text(currentCity);
+      pTag.attr("style", "border: 1px solid lightgrey; border-radius: 15px; background-color: blue; color: white; width: 200px; padding : 10px");
+      pTag.click(function(){
+        event.preventDefault();
+        var cityClicked = $(this).text().trim();
+        getWeatherReport(cityClicked);
+      })
+    }
+  }
+  else {
+    cityArr = [];
+  }
+}
+
+ 
+//Onclick function when the search button has been clicked
 $("#btnClick").click(function() {
 event.preventDefault();
 var city = $("#searchCity").val();
-console.log(city);
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=16fd80b6a0c31e142c0590d26368ab29";
+getWeatherReport(city);
+saveCitySearched(city);
+displayLastCity();
+});
+   
+
+//Function to get the weather reports using ajax calls 
+function getWeatherReport(cityName) {
+
+  var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=16fd80b6a0c31e142c0590d26368ab29";
 
 $.ajax({
     url: queryURL,
@@ -35,16 +67,14 @@ $.ajax({
    var lon = response.coord.lon;
     console.log(response.coord.lat)
    var lat = response.coord.lat;
-  //  var iconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
    var iconURL = "http://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png"
   
    $(".boxed").attr("style", "border: 1px solid gray");
-   $("#cityDate").text(city + "  " + "("+ dateToday + ")" + "   ");
+   $("#cityDate").text(cityName + "  " + "("+ dateToday + ")" + "   ");
    $("#weatherIcon").attr("src", iconURL);
    $("#temperature").text("Temperature : " + finalTemp + " °F");
    $("#humidity").text("Humidity : " + response.main.humidity + " %");
    $("#wind-speed").text("Wind Speed : " + response.wind.speed + " MPH");
-  
 
 
    var queryURLUV = "https://api.openweathermap.org/data/2.5/uvi?appid=16fd80b6a0c31e142c0590d26368ab29&lat=" + lat + "&lon=" + lon;
@@ -88,7 +118,7 @@ $.ajax({
    });
 });
 
-var queryURLfCast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=16fd80b6a0c31e142c0590d26368ab29";
+var queryURLfCast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=16fd80b6a0c31e142c0590d26368ab29";
 
 $.ajax({
     url: queryURLfCast,
@@ -129,18 +159,32 @@ $.ajax({
 
 
 });
-});
-   
+}
 
+//Function to save the last searched city in the local storage 
+function saveCitySearched (cityName) {
+  cityArr.push(cityName);
+  cityName = "";
+  localStorage.setItem("cityArr", JSON.stringify(cityArr));
+}
 
+//Function to prepend the last searched city in the list of Cities Searched 
+function displayLastCity() {
+  cityArr = JSON.parse(localStorage.getItem("cityArr"));
+  if(cityArr !== null)
+  {
+    var pTag = $("<p>");
+    pTag.text(cityArr[cityArr.length - 1]);
+    pTag.attr("style", "border: 1px solid lightgrey; border-radius: 15px; background-color: blue; color: white; width: 200px; padding : 10px");
+    $("#citiesSearched").prepend(pTag);
+    pTag.click(function(){
+      event.preventDefault();
+      var cityClicked = $(this).text().trim();
+      getWeatherReport(cityClicked);
+    })
 
-
-
-
-
-
-
-
+  }
+}
 
 
 
