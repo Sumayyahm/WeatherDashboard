@@ -17,3 +17,11 @@ c. The JS file ->
    Using latitude and longitude from the previous ajax function the second ajax function is called to get the UV index. When the UV index is viewed it is presented with a background color that indicates the UV strength where green is the least and violet the highest. This is done using a series of if else statement
    The third ajax funtion uses the city name to get the weather forecast for the next 5 days.
    6. Next the saveCitySearched function is called that saves the last searched city in the local storage and the displayLastCity function displays the last searched city in the list of cities searched
+
+
+URL of the Deployed Application : https://sumayyahm.github.io/WeatherDashboard/
+
+![image](https://user-images.githubusercontent.com/66535567/90560839-54455d80-e165-11ea-8098-3e6a52afac68.png)
+Screenshot of the Deployed Application
+
+
