@@ -15,6 +15,8 @@ function retreiveLocalStorage() {
   cityArr = JSON.parse(localStorage.getItem("cityArr"));
   if(cityArr !== null)
   {
+    var lastCity = cityArr[cityArr.length-1];
+    getWeatherReport(lastCity);
     for (var i = 0;  i < cityArr.length; i++)
     { 
       var currentCity = cityArr[i];

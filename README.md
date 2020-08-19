@@ -10,10 +10,10 @@ b. The CSS page->
 c. The JS file ->
    1. jQuery has been primarily used
    2. created variables to store the current date as well as the next five days' date using moment.js
-   3. When the page is refreshed, retreiveLocalStorage function is called to get the list of cities from the local storage and display them. If a city is clicked, the weather report of that city as well the 5 day forecast is displayed.
+   3. When the page loads, retreiveLocalStorage function is called to get and display the list of cities from the local storage and display the current and future weather conditions of the last searched city. If any city on the list is clicked, the current and future weather report of that city displayed.
    4. An onclick function gets the city name from the input text area when the search button has been clicked  and calls the getWeatherReport function.
    5. getWeatherReport function takes the cityName as an input and calls 3 different ajax functions- 
    the first ajax function gives the current weather(temperature humidity and wind-speed as well as latitude and longitude)
-   Using latitude and longitude from the previous ajax function the second ajax function is called to get the UV index. When the UV index is viewed it is presented with a background color that indicates the UV strength where green is the least and violet the highest. This is done using a series of if else statement
+   Using latitude and longitude from the previous ajax function the second ajax function is called to get the UV index. When the UV index is viewed it is presented with a background color that indicates the UV strength where green is the least and violet the highest. This is done using a series of if else statements.
    The third ajax funtion uses the city name to get the weather forecast for the next 5 days.
    6. Next the saveCitySearched function is called that saves the last searched city in the local storage and the displayLastCity function displays the last searched city in the list of cities searched
